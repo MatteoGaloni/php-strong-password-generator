@@ -24,7 +24,7 @@ $pswLength = ($_GET["password"]);
 <body>
     <main>
         <div class="container">
-            <form method="GET" action="index.php">
+            <form method="GET" action="result.php">
                 <div class="mb-3">
                     <label for="password" class="form-label">Password Generator</label>
                     <input name="password" value="<?php echo $pswLength ?>" min="5" max="15" type="number" class="form-control" id="password" aria-describedby="emailHelp" placeholder="Inserisci un numero in base alla lunghezza della password desiderata">
