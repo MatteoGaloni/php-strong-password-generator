@@ -1,3 +1,11 @@
+<?php
+$pswLength = ($_POST["password"]);
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,12 +22,14 @@
         <div class="container">
             <form method="POST" action="index.php">
                 <div class="mb-3">
-                    <label for="password" class="form-label">Email address</label>
-                    <input name="password" type="number" class="form-control" id="password" aria-describedby="emailHelp">
+                    <label for="password" class="form-label">Password Generator</label>
+                    <input name="password" min="5" max="15" type="number" class="form-control" id="password" aria-describedby="emailHelp" placeholder="Inserisci un numero in base alla lunghezza della password desiderata">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-primary">Reset</button>
             </form>
 
+            <h2>La lunghezza della password è: <?php echo $pswLength ?> </h2>
         </div>
     </main>
 </body>
