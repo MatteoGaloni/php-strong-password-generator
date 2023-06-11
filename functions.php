@@ -3,34 +3,34 @@
 /**
  * 
  */
-function randomPsw($length, $letters, $numbers, $special)
+function randomPsw($length, $numbers, $letters, $special)
 {
-    $NumbersArray = '0123456789';
-    $LettersArray = 'abcdefghil';
-    $SpecialArray = '@#$&?!*=%';
+    $Numbers = '0123456789';
+    $Letters = 'abcdefghil';
+    $Special = '@#$&?!*=%';
     $result = "";
+    $finalPassword = "";
 
     if ($length > 0) {
 
-        if ($letters) {
-            $result .= $LettersArray;
+        if ($letters || !$letters && !$numbers && !$special) {
+            $result .= $Letters;
         }
-        if ($numbers) {
-            $result .= $NumbersArray;
+        if ($numbers || !$letters && !$numbers && !$special) {
+            $result .= $Numbers;
         }
-        if ($special) {
-            $result .= $SpecialArray;
+        if ($special || !$letters && !$numbers && !$special) {
+            $result .= $Special;
         }
-        // $index = 0;
 
+        $passwordArray = str_split($result);
         for ($i = 0; $i < $length; $i++) {
-            $RandNumber = rand(0, strlen($result) - 1);
-            $result .= $NumbersArray[$RandNumber];
+            $RandNumber = rand(0, count($passwordArray) - 1);
+            $finalPassword .= $passwordArray[$RandNumber];
         }
-
 
         session_start();
-        $_SESSION["password"] = $result;
+        $_SESSION["password"] = $finalPassword;
         header("Location: result.php");
     }
 }
