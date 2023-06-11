@@ -6,7 +6,9 @@ function randomPsw($length, $numbers, $letters, $special)
     $Letters = 'abcdefghil';
     $Special = '@#$&?!*=%';
     $result = "";
+    $singleChar = "";
     $finalPassword = "";
+    $i = "1";
 
     if ($length > 0) {
 
@@ -21,9 +23,21 @@ function randomPsw($length, $numbers, $letters, $special)
         }
 
         $passwordArray = str_split($result);
-        for ($i = 0; $i < $length; $i++) {
+        // for ($i = 0; $i < $length; $i++) {
+        //     $RandNumber = rand(0, count($passwordArray) - 1);
+        //     $singleChar = $passwordArray[$RandNumber];
+        //     if (!str_contains($finalPassword, $singleChar)) {
+        //         $finalPassword .= $singleChar;
+        //     }
+        // }
+
+        while ($i <= $length) {
             $RandNumber = rand(0, count($passwordArray) - 1);
-            $finalPassword .= $passwordArray[$RandNumber];
+            $singleChar = $passwordArray[$RandNumber];
+            if (!str_contains($finalPassword, $singleChar)) {
+                $finalPassword .= $singleChar;
+                $i++;
+            }
         }
 
         session_start();
