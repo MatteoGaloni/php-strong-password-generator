@@ -20,7 +20,7 @@ session_start()
                 <?php echo $_SESSION["password"] ?>
             </h1>
 
-            <h1> Il valore della checkbox è: <?php echo $pswLength ?></h1>
+            <h1> Il valore della checkbox è: <?php var_dump($pswLength) ?></h1>
         </div>
     </main>
 </body>

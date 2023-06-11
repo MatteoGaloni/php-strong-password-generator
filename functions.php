@@ -1,8 +1,5 @@
 <?php
 
-/**
- * 
- */
 function randomPsw($length, $numbers, $letters, $special)
 {
     $Numbers = '0123456789';
@@ -34,11 +31,3 @@ function randomPsw($length, $numbers, $letters, $special)
         header("Location: result.php");
     }
 }
-// foreach ($NumericArray as $key => $value) {
-//     $RandNumber = rand(0, count($NumericArray) - 1);
-//     $result .= $NumericArray[$RandNumber]['number' && 'letter' && 'special'];
-//     $index++;
-//     if ($index >= $length) {
-//         break;
-//     }
-// }
