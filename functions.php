@@ -1,13 +1,44 @@
 <?php
-function randomPsw($number)
+
+/**
+ * 
+ */
+function randomPsw($length, $letters, $numbers, $special)
 {
-    $alphaNumericArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'A', 'b', 'B', 'c', 'C', 'd', 'D'];
+    $NumbersArray = '0123456789';
+    $LettersArray = 'abcdefghil';
+    $SpecialArray = '@#$&?!*=%';
     $result = "";
-    for ($i = 0; $i < $number; $i++) {
-        $RandNumber = rand(0, count($alphaNumericArray) - 1);
-        $result .= $alphaNumericArray[$RandNumber];
+
+    if ($length > 0) {
+
+        if ($letters) {
+            $result .= $LettersArray;
+        }
+        if ($numbers) {
+            $result .= $NumbersArray;
+        }
+        if ($special) {
+            $result .= $SpecialArray;
+        }
+        // $index = 0;
+
+        for ($i = 0; $i < $length; $i++) {
+            $RandNumber = rand(0, strlen($result) - 1);
+            $result .= $NumbersArray[$RandNumber];
+        }
+
+
+        session_start();
+        $_SESSION["password"] = $result;
+        header("Location: result.php");
     }
-    session_start();
-    $_SESSION["password"] = $result;
-    return $result;
 }
+// foreach ($NumericArray as $key => $value) {
+//     $RandNumber = rand(0, count($NumericArray) - 1);
+//     $result .= $NumericArray[$RandNumber]['number' && 'letter' && 'special'];
+//     $index++;
+//     if ($index >= $length) {
+//         break;
+//     }
+// }
